@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Flat">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Flat" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Floor" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="List of housing stock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Адрес" Type="nvarchar(max)" />
+    <Property Name="The beginning of management" Type="int" />
+    <Property Name="Floor" Type="int" />
+    <Property Name="Flat" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Area" Type="decimal" Precision="18" Scale="10" />
+  </EntityType>
+  <EntityType Name="List_of_debts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address" Type="int" Nullable="false" />
+    <Property Name="Flat" Type="int" Nullable="false" />
+    <Property Name="Owner" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Water" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Electricpower" Type="decimal" Precision="18" Scale="10" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Owner" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Owner" Type="int" Nullable="false" />
+    <Property Name="Address" Type="int" Nullable="false" />
+    <Property Name="Flat" Type="int" Nullable="false" />
+    <Property Name="Period" Type="date" Nullable="false" />
+    <Property Name="Accrued" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Paid_for" Type="decimal" Precision="18" Scale="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="The beginning of management">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="The_beginning_of_management" Type="date" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Year">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="int" />
+  </EntityType>
+  <Association Name="FK_List of housing stock_Flat">
+    <End Role="Flat" Type="Self.Flat" Multiplicity="0..1" />
+    <End Role="List of housing stock" Type="Self.List of housing stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flat">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="List of housing stock">
+        <PropertyRef Name="Flat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List of housing stock_Floor">
+    <End Role="Floor" Type="Self.Floor" Multiplicity="0..1" />
+    <End Role="List of housing stock" Type="Self.List of housing stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="List of housing stock">
+        <PropertyRef Name="Floor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List of housing stock_The beginning of management">
+    <End Role="The beginning of management" Type="Self.The beginning of management" Multiplicity="0..1" />
+    <End Role="List of housing stock" Type="Self.List of housing stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="The beginning of management">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="List of housing stock">
+        <PropertyRef Name="The beginning of management" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List of housing stock_Year">
+    <End Role="Year" Type="Self.Year" Multiplicity="0..1" />
+    <End Role="List of housing stock" Type="Self.List of housing stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Year">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="List of housing stock">
+        <PropertyRef Name="Year" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List_of_debts_List of housing stock">
+    <End Role="List of housing stock" Type="Self.List of housing stock" Multiplicity="1" />
+    <End Role="List_of_debts" Type="Self.List_of_debts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="List of housing stock">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="List_of_debts">
+        <PropertyRef Name="Address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_List_of_debts_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="List_of_debts" Type="Self.List_of_debts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="List_of_debts">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment Report_List of housing stock">
+    <End Role="List of housing stock" Type="Self.List of housing stock" Multiplicity="1" />
+    <End Role="Payment Report" Type="Self.Payment Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="List of housing stock">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment Report">
+        <PropertyRef Name="Address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment Report_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="Payment Report" Type="Self.Payment Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment Report">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ModelContainer">
+    <EntitySet Name="Flat" EntityType="Self.Flat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Floor" EntityType="Self.Floor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="List of housing stock" EntityType="Self.List of housing stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="List_of_debts" EntityType="Self.List_of_debts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment Report" EntityType="Self.Payment Report" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="The beginning of management" EntityType="Self.The beginning of management" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Year" EntityType="Self.Year" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_List of housing stock_Flat" Association="Self.FK_List of housing stock_Flat">
+      <End Role="Flat" EntitySet="Flat" />
+      <End Role="List of housing stock" EntitySet="List of housing stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List of housing stock_Floor" Association="Self.FK_List of housing stock_Floor">
+      <End Role="Floor" EntitySet="Floor" />
+      <End Role="List of housing stock" EntitySet="List of housing stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List of housing stock_The beginning of management" Association="Self.FK_List of housing stock_The beginning of management">
+      <End Role="The beginning of management" EntitySet="The beginning of management" />
+      <End Role="List of housing stock" EntitySet="List of housing stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List of housing stock_Year" Association="Self.FK_List of housing stock_Year">
+      <End Role="Year" EntitySet="Year" />
+      <End Role="List of housing stock" EntitySet="List of housing stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List_of_debts_List of housing stock" Association="Self.FK_List_of_debts_List of housing stock">
+      <End Role="List of housing stock" EntitySet="List of housing stock" />
+      <End Role="List_of_debts" EntitySet="List_of_debts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_List_of_debts_Owner" Association="Self.FK_List_of_debts_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="List_of_debts" EntitySet="List_of_debts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment Report_List of housing stock" Association="Self.FK_Payment Report_List of housing stock">
+      <End Role="List of housing stock" EntitySet="List of housing stock" />
+      <End Role="Payment Report" EntitySet="Payment Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment Report_Owner" Association="Self.FK_Payment Report_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Payment Report" EntitySet="Payment Report" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

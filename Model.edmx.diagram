@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c71b2e208fd44cfba6a6bd5c9f0974a7" Name="Diagram1">
+        <EntityTypeShape EntityType="UP_HouseModel.Applications" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.HistoryJob" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.List_of_debts" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.List_of_housing_stock" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.Owner" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.Payment_Report" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.Rate" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.ReportOfJob" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.Roles" Width="1.5" PointX="1.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.Service" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.Status" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.StatusReportJob" Width="1.5" PointX="6" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_HouseModel.Users" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="UP_HouseModel.FK_Applications_List_of_housing_stock" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_Applications_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_Applications_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_ReportOfJob_Applications" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_Service_Applications" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_HistoryJob_ReportOfJob" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_List_of_debts_List_of_housing_stock" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_List_of_debts_Owner" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_Payment_Report_List_of_housing_stock" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_Payment_Report_Owner" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_ReportOfJob_StatusReportJob" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="UP_HouseModel.FK_Service_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
